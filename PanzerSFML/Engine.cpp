@@ -33,10 +33,12 @@ void Engine::start() {
 	}
 }
 
+//Отрисовка текущей карты или/и интерфейса
 void Engine::draw() {
 
 }
 
+//Обновление окна
 void Engine::update() {
 
 }
