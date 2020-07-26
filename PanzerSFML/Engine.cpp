@@ -5,6 +5,8 @@
 
 using namespace sf;
 
+const int MAX_WORLD_SCALE = 13;
+const int MIN_WORLD_SCALE = 1;
 
 Engine::Engine(RenderWindow &window) {
 	Engine::window = &window;
@@ -23,20 +25,31 @@ void Engine::start() {
 
 		Event event; // Создаем пустой евент, далее, через указатель в pollEvent, в него будут записываться данный
 		while (window->pollEvent(event)) { // Цикл прохождения по всем эвентам окна на данный момент ( нажатия и т.п )
+			switch (event.type) {
 
-			if (event.type == Event::Closed) { // Если евент равен закрытию
-				window->close(); // Закрываем окно
+				case Event::Closed:  // Если евент равен закрытию
+					window->close(); // Закрываем окно
+					break;
+
+				case Event::MouseWheelMoved:
+					if (event.mouseWheel.delta == 1 && world_scale < MAX_WORLD_SCALE) {
+						world_scale += 0.1f * deltaTime;
+					}
+					else if (event.mouseWheel.delta == -1 && world_scale > MIN_WORLD_SCALE) {
+						world_scale -= 0.1f * deltaTime;
+					}
+					if (world_scale < MIN_WORLD_SCALE) world_scale = MIN_WORLD_SCALE;
+					else if (world_scale > MAX_WORLD_SCALE) world_scale = MAX_WORLD_SCALE;
 			}
 		}
 
 		window->clear(Color(250, 220, 100, 0)); // Очищаем заливкой все окно определенным цветом rgba
-
-		world_scale += 0.001f * deltaTime;
+ 
 		sand.setScale(Vector2f(world_scale, world_scale));
 		sand.update();
 		sand.draw();
 
-		String string = "DT:" + std::to_string(Engine::deltaTime);
+		String string = "WS:" + std::to_string(Engine::world_scale);
 		text.setString(string);
 		window->draw(text);
 	
