@@ -7,13 +7,16 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp> // Подключаем графическую библиотеку SFML
-#include "loadTextures.h"
+#include "SpriteManager.h"
+#include "Object.h"
 
 using namespace std;
 using namespace sf; // Используем поле имен sf, чтобы не писать каждый раз sf::
 
-void draw(RenderWindow &window) { // Получаем ссылку наа наше окно
+SpriteManager sprite_manager;
+Object sand(sprite_manager.SPRITE_GROUND_SAND, Vector2f(20, 20));
 
+void draw(RenderWindow &window) { // Получаем ссылку наа наше окно
 	/*
 	CircleShape circle(50.0f); // Круг радиусом 50 пикселей
 	circle.setFillColor(Color(100, 0, 0)); // Заполняем круг определенным цветом
@@ -26,10 +29,12 @@ void draw(RenderWindow &window) { // Получаем ссылку наа наше окно
 
 	//SPRITE_GROUND_SAND.setTexture(TEXTURE_TILES1); // Работает, при объявлении данной текстуры тут
 	//SPRITE_GROUND_SAND.setTextureRect(IntRect(27, 3, 20, 16));
+
+	sand.draw();
 }
 
 int main() {
-	loadTexturesAndSprites(); // Загружаем текстуры
+	//loadTexturesAndSprites(); // Загружаем текстуры // Устарело, с появлением менеджера спрайтов
 
 	RenderWindow window(VideoMode(800, 600), "PanzerSFML debugging"); // Объявляем окно с размером 800 на 600 и именем
 
