@@ -9,6 +9,7 @@
 #include <SFML/Graphics.hpp> // Подключаем графическую библиотеку SFML
 #include "Engine.h"
 
+//TODO: Добавить карту, отрисовку карты, добавить больше объектов, перемещение и масштабирование карты, класс танка, перемещение по клику
 RenderWindow window(VideoMode(900, 800), "Game");
 Engine engine(window);
 
