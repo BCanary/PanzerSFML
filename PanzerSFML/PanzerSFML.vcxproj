@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Decoration.cpp" />
+    <ClCompile Include="DecorationManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -27,6 +29,8 @@
     <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Decoration.h" />
+    <ClInclude Include="DecorationManager.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Object.h" />

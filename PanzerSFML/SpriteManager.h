@@ -8,6 +8,7 @@ public:
 	Texture TEXTURE_TILES1;
 	Texture TEXTURE_TANKS1;
 
+	Sprite SPRITE_VOID;
 	//T34
 	Sprite SPRITE_T34_LEFT;
 	Sprite SPRITE_T34_RIGHT;
@@ -16,6 +17,9 @@ public:
 
 	//Ground
 	Sprite SPRITE_GROUND_SAND;
+
+	//Decorations
+	Sprite SPRITE_DECORATION_DEAD_BUSH_1;
 
 	SpriteManager();
 private:
