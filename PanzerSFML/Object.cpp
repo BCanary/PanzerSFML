@@ -57,10 +57,10 @@ void Object::move(float deltaTime, float moveX, float moveY) {
 
 //Двигаем и приближаем 
 void Object::update() {
-	Object::sprite.setPosition(Object::position);
+	Object::sprite.setPosition(Object::position.x - engine->camera_x, Object::position.y - engine->camera_y);
 	Object::sprite.setScale(Object::scale);
 	if (Object::have_decoration) {
-		Object::decoration.updateDecoration(Object::position, Object::sprite.getOrigin(), Object::scale);
+		Object::decoration.updateDecoration(Object::position, Object::sprite.getOrigin(), Object::scale, engine->camera_x, engine->camera_y);
 	}
 }
 

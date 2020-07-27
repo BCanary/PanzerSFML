@@ -11,9 +11,9 @@ Decoration::Decoration(Sprite sprite, Vector2f margin) {
 }
 
 // Обновляет объект
-void Decoration::updateDecoration(Vector2f parent_position, Vector2f parent_origin, Vector2f scale) {
+void Decoration::updateDecoration(Vector2f parent_position, Vector2f parent_origin, Vector2f scale, int camera_x, int camera_y) {
 	Decoration::sprite.setOrigin(parent_origin.x + margin.x, parent_origin.y + margin.y); // Двигаем начальную точку, относительно центро объекта
-	Decoration::sprite.setPosition(parent_position); // Это нужно, для того, чтобы они равномерно увеличивались
+	Decoration::sprite.setPosition(parent_position.x - camera_x, parent_position.y - camera_y); // Это нужно, для того, чтобы они равномерно увеличивались
 	Decoration::sprite.setScale(scale); // Увеличиваем
 }
 
