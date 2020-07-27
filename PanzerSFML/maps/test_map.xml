@@ -1,0 +1,17 @@
+
+<root>
+	<info>
+		<map_name>Тестовая карта номер 1</map_name>
+		<map_size width="2" height="2"/>
+	</info>
+	<map>
+		<line>
+			<tile type="sand" decoration="dead_bush"/>
+			<tile type="sand" decoration="none"/>
+		</line>
+		<line>
+			<tile type="sand" decoration="none"/>
+			<tile type="sand" decoration="dead_bush"/>
+		</line>
+	</map>
+</root>

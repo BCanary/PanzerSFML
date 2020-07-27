@@ -24,18 +24,22 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Decoration.h" />
     <ClInclude Include="DecorationManager.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="MapManager.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="tinyxml2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

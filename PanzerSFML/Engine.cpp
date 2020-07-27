@@ -1,7 +1,9 @@
 #include "Engine.h"
 #include <SFML/Graphics.hpp>
 #include "Tile.h"
+#include "Map.h"
 #include <string>
+#include <sstream>
 
 using namespace sf;
 
@@ -16,9 +18,12 @@ Engine::Engine(RenderWindow &window) {
 }
 
 void Engine::start() {
-	Tile sand(this, sprite_manager.SPRITE_GROUND_SAND, Vector2f(900/2, 800/2), decoration_manager.DECORATION_DEAD_BUSH_1, 2, true);
 
 	Text text("DT: 0", font_pixel, 20);
+
+	XMLDocument doc;
+	doc.LoadFile("maps/test_map.xml");
+	Map test_map(doc);
 
 	while (window->isOpen()) { // Пока окно открыто, очевидно закрытие окна приведет к false
 		clock_delta_time.restart(); // Перезапускаем часы
@@ -83,12 +88,12 @@ void Engine::start() {
 
 		window->clear(Color(250, 220, 100, 0)); // Очищаем заливкой все окно определенным цветом rgba
  
-		sand.setScale(Vector2f(world_scale, world_scale));
-		sand.update();
-		sand.draw();
+		//sand.setScale(Vector2f(world_scale, world_scale));
+		//sand.update();
+		//sand.draw();
 
-		String string = "MP:" + std::to_string(old_camera_x) + "/" + std::to_string(old_camera_y);
-		text.setString(string);
+		string map_name = test_map.getMapName();
+		text.setString(String::fromUtf8(map_name.begin(), map_name.end()));
 		window->draw(text);
 	
 		update(); // Обновляем состояние
@@ -96,7 +101,7 @@ void Engine::start() {
 
 		window->display(); // Рисуем окно
 
-		Engine::delta_time = clock_delta_time.getElapsedTime().asMicroseconds(); // Замеряем время
+		Engine::delta_time = static_cast<float>(clock_delta_time.getElapsedTime().asMicroseconds()); // Замеряем время
 		Engine::delta_time /= 900.0f;
 
 	}
