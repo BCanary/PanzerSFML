@@ -1,7 +1,10 @@
 #include "Map.h"
+#include "Engine.h"
 
-Map::Map(XMLDocument &document) {
+Map::Map(XMLDocument &document, Engine* engine) {
 	Map::map_document = &document;
+	
+	Map::engine = engine;
 
 	XMLNode* root = map_document->FirstChildElement("root"); // Получаем рут
 

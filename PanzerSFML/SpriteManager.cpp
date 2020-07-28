@@ -12,7 +12,7 @@ SpriteManager::SpriteManager() {
 void SpriteManager::setSpriteCFG(Sprite& sprite, Texture& texture, IntRect rect) {
 	sprite.setTexture(texture);
 	sprite.setTextureRect(rect);
-	sprite.setOrigin(rect.width / 2, rect.height / 2);
+	//sprite.setOrigin(rect.width / 2, rect.height / 2);
 }
 
 void SpriteManager::loadTextures() {
@@ -29,8 +29,10 @@ void SpriteManager::loadSprites() {
 
 	//Tiles
 	setSpriteCFG(SPRITE_GROUND_SAND, TEXTURE_TILES1, IntRect(27, 3, 20, 16));
-	
+	setSpriteCFG(SPRITE_GROUND_GRAVEL, TEXTURE_TILES1, IntRect(129, 6, 20, 16));
+
 	//Decorations
 	setSpriteCFG(SPRITE_DECORATION_DEAD_BUSH_1, TEXTURE_TILES1, IntRect(28, 84, 15, 14));
+	setSpriteCFG(SPRITE_DECORATION_ROAD_FENCE_1, TEXTURE_TILES1, IntRect(17, 125, 20, 10));
 };
 

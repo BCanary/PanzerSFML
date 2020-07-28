@@ -17,9 +17,11 @@ public:
 
 	//Ground
 	Sprite SPRITE_GROUND_SAND;
+	Sprite SPRITE_GROUND_GRAVEL;
 
 	//Decorations
 	Sprite SPRITE_DECORATION_DEAD_BUSH_1;
+	Sprite SPRITE_DECORATION_ROAD_FENCE_1;
 
 	SpriteManager();
 private:

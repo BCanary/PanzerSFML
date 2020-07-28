@@ -42,6 +42,7 @@ void Object::setPosition(Vector2f position) {
 //Устанавливаем приближение объекта
 void Object::setScale(Vector2f scale) {
 	Object::scale = scale;
+	Object::sprite.setScale(Object::scale);
 }
 
 // Получить позицию объекта
@@ -57,10 +58,11 @@ void Object::move(float deltaTime, float moveX, float moveY) {
 
 //Двигаем и приближаем 
 void Object::update() {
-	Object::sprite.setPosition(Object::position.x - engine->camera_x, Object::position.y - engine->camera_y);
-	Object::sprite.setScale(Object::scale);
+	Object::setScale(engine->getWorldScale());
+	float escale = engine->getWorldScale().x; // Engine scale
+	Object::sprite.setPosition(Object::position.x*engine->getWorldScale().x - Object::position.x - engine->camera_x, Object::position.y - engine->camera_y);
 	if (Object::have_decoration) {
-		Object::decoration.updateDecoration(Object::position, Object::sprite.getOrigin(), Object::scale, engine->camera_x, engine->camera_y);
+		Object::decoration.updateDecoration(this);
 	}
 }
 

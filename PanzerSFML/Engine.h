@@ -8,6 +8,7 @@ using namespace sf;
 
 class Engine {
 public:
+	Engine() {};
 	Engine(RenderWindow &window); // Конструктор игрового движка
 
 	void start(); // Запустить игровой движок
@@ -23,11 +24,12 @@ public:
 	RenderWindow* getRenderWindow(); // Получить игровое окно указателем
 	SpriteManager& getSpriteManager(); // Получить адрес менеджера спрайтов
 	DecorationManager& getDecorationManager(); // Получить адрес менеджера декораций
+	Vector2f getWorldScale();
 private:
 	Clock clock_delta_time; // Таймер, для просчета дельты времени
 	float delta_time = 0; // Время потраченное на логику и отрисовку
 
-	float world_scale = 5; // Приближение всех объектов
+	float world_scale = 1; // Приближение всех объектов
 	float gui_scale = 1; // Приближение интерфейса
 
 	int mouse_x = 0;
@@ -48,7 +50,8 @@ private:
 	void draw(); // Отрисовка кадра
 
 	RenderWindow *window; // Игровое окно
+	//View *view;
 	
 	SpriteManager sprite_manager; // Менеджер игровых спрайтов
-	DecorationManager decoration_manager = DecorationManager(sprite_manager); // Менеджер декораций
+	DecorationManager decoration_manager = DecorationManager(this); // Менеджер декораций
 };

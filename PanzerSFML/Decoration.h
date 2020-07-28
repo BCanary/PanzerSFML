@@ -1,16 +1,22 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+class Engine;
+class Object;
+
 using namespace sf;
 
 // Декорации нужны, для отрисовки их, поверх тайлов.
 class Decoration {
 public:
-	Decoration(Sprite sprite, Vector2f margin);
+	Decoration(Engine* engine, Sprite sprite, Vector2f margin);
+	Decoration(Engine* engine);
 	Decoration();
-	void updateDecoration(Vector2f parent_position, Vector2f parent_origin, Vector2f scale, int mouse_x, int mouse_y);
+	void updateDecoration(Object *parent_tile);
 	void drawDecoration(RenderWindow *window);
 private:
+	Engine* engine;
+
 	Sprite sprite;
 
 	Vector2f margin;
